@@ -1,0 +1,28 @@
+<h1>TO-DO List em ANGULAR 🅰️</h1>
+
+<form (ngSubmit)="addTodo()" class="form">
+  <input
+    required
+    type="text"
+    class="input"
+    [(ngModel)]="text"
+    name="todoText"
+    placeholder="Digite uma tarefa" />
+  <span class="input-border"></span>
+  <button type="submit">Adicionar</button>
+
+</form>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    <input
+      type="checkbox"
+      [checked]="todo.completed"
+      (change)="toggleTodo(todo.id)"
+    />
+    <span [ngStyle]="{ 'text-decoration': todo.completed ? 'line-through' : 'none' }">
+      {{ todo.text }}
+    </span>
+    <button (click)="deleteTodo(todo.id)">🗑️</button>
+  </li>
+</ul>
