@@ -34,20 +34,9 @@ const text = ref('')
 const todos = ref<Todo[]>([])
 
 function addTodo() {
-    /*
-     * NOTE: A medição de desempenho é feita aqui, mas não é usada para nada.
-     * Isso é apenas para simular um atraso na medição de desempenho
-     * e para que o teste de desempenho funcione corretamente.
-     */
-    const t0 = performance.now();
-
     if (!text.value.trim()) return
     todos.value.push({ id: Date.now(), text: text.value, completed: false })
     text.value = ''
-
-    // NOTE: Essas linhas abaixo (até o fim do escopo dessa função) é apenas para simular um atraso na medição de desempenho
-    const t1 = performance.now();
-    console.log(`VUE -> A adição de uma nova tarefa levou ${t1 - t0} milissegundos`);
 }
 
 function toggleTodo(id: number) {
@@ -56,31 +45,6 @@ function toggleTodo(id: number) {
 }
 
 function deleteTodo(id: number) {
-    /*
-     * NOTE: A medição de desempenho é feita aqui, mas não é usada para nada.
-     * Isso é apenas para simular um atraso na medição de desempenho
-     * e para que o teste de desempenho funcione corretamente.
-     */
-    const t0 = performance.now();
     todos.value = todos.value.filter((t: Todo) => t.id !== id)
-    // NOTE: Essas linhas abaixo (até o fim do escopo dessa função) é apenas para simular um atraso na medição de desempenho
-    const t1 = performance.now();
-    console.log(
-      `VUE -> A remoção de uma nova tarefa levou ${t1 - t0} milissegundos`
-    );
 }
 </script>
-
-<style scoped>
-    .container {
-        padding: 2rem;
-    }
-
-    .form {
-        margin-bottom: 1rem;
-    }
-
-    .input {
-        margin-right: 1rem;
-    }
-</style>
