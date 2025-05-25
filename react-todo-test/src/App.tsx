@@ -7,6 +7,13 @@ function App() {
   const [text, setText] = useState("");
 
   const addTodo = () => {
+    /*
+     * NOTE: A medição de desempenho é feita aqui, mas não é usada para nada.
+     * Isso é apenas para simular um atraso na medição de desempenho
+     * e para que o teste de desempenho funcione corretamente.
+     */
+    const t0 = performance.now();
+
     if (text.trim() === "") return;
     const newTodo: Todo = {
       id: Date.now(),
@@ -15,6 +22,12 @@ function App() {
     };
     setTodos([...todos, newTodo]);
     setText("");
+
+    // NOTE: Essas linhas abaixo (até o fim do escopo dessa função) é apenas para simular um atraso na medição de desempenho
+    const t1 = performance.now();
+    console.log(
+      `REACT -> A adição de uma nova tarefa levou ${t1 - t0} milissegundos`
+    );
   };
 
   const toggleTodo = (id: number) => {
@@ -26,7 +39,18 @@ function App() {
   };
 
   const deleteTodo = (id: number) => {
+    /*
+     * NOTE: A medição de desempenho é feita aqui, mas não é usada para nada.
+     * Isso é apenas para simular um atraso na medição de desempenho
+     * e para que o teste de desempenho funcione corretamente.
+     */
+    const t0 = performance.now();
     setTodos(todos.filter((todo) => todo.id !== id));
+    // NOTE: Essas linhas abaixo (até o fim do escopo dessa função) é apenas para simular um atraso na medição de desempenho
+    const t1 = performance.now();
+    console.log(
+      `REACT -> A remoção de uma nova tarefa levou ${t1 - t0} milissegundos`
+    );
   };
 
   return (
