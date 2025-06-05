@@ -77,16 +77,18 @@ function App() {
         <button type="submit">Adicionar</button>
       </form>
 
-      <div style={{ marginTop: "1rem" }}>
+      <ul style={{ marginTop: "1rem" }}>
         {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            toggleTodo={toggleTodo}
-            deleteTodo={deleteTodo}
-          />
+          <li key={todo.id}>
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

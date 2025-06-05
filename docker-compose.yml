@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    container_name: avaliacao
+    volumes:
+      - .:/workspace
+    ports:
+      - "3000:3000" # React (Vite)
+      - "4200:4200" # Angular
+      - "5173:5173" # Vue (Vite)
+    stdin_open: true
+    tty: true
